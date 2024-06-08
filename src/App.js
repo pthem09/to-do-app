@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import './App.css';
 
 import ToDoForm from './Components/ToDoForm/ToDoForm';
 import ToDoList from './Components/ToDoList/ToDoList';
 
 export default function App() {
+  
+  let [toDoItems, setToDoItems] = useState([
+    {item: "name of item"},
+    {item: "second item"}
+  ]);
+
   return (
     <div className="App">
       <header>
