@@ -10,11 +10,13 @@ export default function App() {
   let [toDoItems, setToDoItems] = useState([
     {
       id: nanoid(),
-      item: "name of item",
+      description: "name of item",
+      link: "www.google.com",
     },
     {
       id: nanoid(),
-      item: "second item",
+      description: "second item",
+      link: "www.google.com",
     }
   ]);
 

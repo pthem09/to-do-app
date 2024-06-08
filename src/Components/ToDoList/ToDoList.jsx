@@ -4,7 +4,8 @@ import ToDoItem from './ToDoItem';
 
 export default function ToDoList( [toDoItems] )  {
 
-    let ToDoItemsJsxList = toDoItems.map(item => <ToDoItem />);
+    console.log(toDoItems);
+    let ToDoItemsJsxList = toDoItems.map(item => <ToDoItem key={item.id} {...item} />);
 
     return (
         <div>
