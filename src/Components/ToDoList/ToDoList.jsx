@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDoItem from './ToDoItem';
-import ToDoItem from './ToDoItem';
+import './ToDo.css';
 
 export default function ToDoList( [toDoItems] )  {
 
@@ -8,9 +8,9 @@ export default function ToDoList( [toDoItems] )  {
     let ToDoItemsJsxList = toDoItems.map(item => <ToDoItem key={item.id} {...item} />);
 
     return (
-        <div>
+        <section className="to-do-list-container">
             ToDoList
             {ToDoItemsJsxList}
-        </div>
+        </section>
     )
 }
