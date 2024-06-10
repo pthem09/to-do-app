@@ -7,8 +7,8 @@ export default function ToDoItem({id, description}) { //Paul - add other propert
             <p className="to-do-item-field">Description: { description }</p>
             <p className="to-do-item-field">
                 Link: 
-                <a href={link} target="_blank" className="to-do-item-anchor">
-                    {link}
+                <a href={"www.google.com"} target="_blank" className="to-do-item-anchor">
+                    {"www.google.com"}
                 </a>
             </p>    
         </section>

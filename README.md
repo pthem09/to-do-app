@@ -1,6 +1,6 @@
 # Browser Parking Lot
 
-Paul - state the purpose of the project.
+Hosting link: https://pthem09.github.io/to-do-app/
 
 ## User stories
 
