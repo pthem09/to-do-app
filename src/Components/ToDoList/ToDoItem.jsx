@@ -1,7 +1,18 @@
 import React from 'react';
 import { Button, Card, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
 
-export default function ToDoItem({date, description, link, priority}) { //Paul - add other properties here as needed
+export default function ToDoItem({
+    deleteItem,
+    id,
+    date,
+    description,
+    link,
+    priority
+}) {
+    function handleDelete() {
+        deleteItem(id);
+    }
+    
     return (
 
         <Card
@@ -10,6 +21,14 @@ export default function ToDoItem({date, description, link, priority}) { //Paul -
             inverse>
         <CardHeader>
             {description}
+            <Button
+                color="danger"
+                className="delete-button"
+                onClick={handleDelete}>
+                    <strong>
+                        X
+                    </strong>
+            </Button>
         </CardHeader>
         <CardBody>
             <CardTitle tag="h5">

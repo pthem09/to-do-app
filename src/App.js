@@ -6,23 +6,40 @@ import ToDoForm from './Components/ToDoForm/ToDoForm';
 import ToDoList from './Components/ToDoList/ToDoList';
 
 export default function App() {
-  
-  let [toDoItems, setToDoItems] = useState([
-    {}
-  ]);
+  let [toDoItems, setToDoItems] = useState([getInitialState]);
 
+  function getInitialState() {
+    let savedState = localStorage.getItem('items');
+    if (typeof savedState === 'string') {
+      return JSON.parse(savedState);
+    }
+    //return [];
+  }
 
   function addItem(date, link, description, priority) {
-    setToDoItems((oldItems) => [
+    setToDoItems((oldItems) => {
+      let newItems = [
       ...oldItems,
       {
-        id: nanoid,
+        id: nanoid(),
         date,
         description,
         link,
         priority
-      }
-    ]);
+      },
+    ];
+    localStorage.setItem('items', JSON.stringify(newItems));
+    return newItems
+  });
+  }
+
+  function deleteItem(id) {
+    setToDoItems((oldItems) => {
+        let newItems = oldItems.filter((item) => item.id !== id);
+        localStorage.setItem('items', JSON.stringify(newItems));
+        return newItems;
+    });
+
   }
 
   return (
@@ -32,7 +49,10 @@ export default function App() {
       </header>
       <main>
         <ToDoForm addItem={addItem}/>
-        <ToDoList toDoItems={toDoItems}/>
+        <ToDoList
+            toDoItems={toDoItems}
+            deleteItem={deleteItem}
+          />
       </main>
     </div>
   );
