@@ -7,27 +7,32 @@ import ToDoList from './Components/ToDoList/ToDoList';
 
 export default function App() {
   
-/*  let [toDoItems, setToDoItems] = useState([
-    {
-      id: nanoid(),
-      description: "name of item",
-      link: "www.google.com",
-    },
-    {
-      id: nanoid(),
-      description: "second item",
-      link: "www.google.com",
-    }
+  let [toDoItems, setToDoItems] = useState([
+    {}
   ]);
-*/
+
+
+  function addItem(date, link, description, priority) {
+    setToDoItems((oldItems) => [
+      ...oldItems,
+      {
+        id: nanoid,
+        date,
+        description,
+        link,
+        priority
+      }
+    ]);
+  }
+
   return (
     <div className="App">
       <header>
         <h1>Manage your tasks</h1>
       </header>
       <main>
-        <ToDoForm />
-        <ToDoList />
+        <ToDoForm addItem={addItem}/>
+        <ToDoList toDoItems={toDoItems}/>
       </main>
     </div>
   );
