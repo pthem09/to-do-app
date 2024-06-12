@@ -7,7 +7,7 @@ import ToDoList from './Components/ToDoList/ToDoList';
 
 export default function App() {
   
-  let [toDoItems, setToDoItems] = useState([
+/*  let [toDoItems, setToDoItems] = useState([
     {
       id: nanoid(),
       description: "name of item",
@@ -19,7 +19,7 @@ export default function App() {
       link: "www.google.com",
     }
   ]);
-
+*/
   return (
     <div className="App">
       <header>
