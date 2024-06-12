@@ -88,43 +88,49 @@ export default function ToDoForm({ addItem }) {
                     required
                 />
             </FormGroup>
-            <FormGroup className="to-do-row">
-                <Input
-                    type="radio"
-                    name="radio-priority"
-                    value={PRIORITIES.High}
-                    checked={priority === PRIORITIES.High}
-                    onChange={handlePriotChange}
-                    id="priot-high"
-                />
-                {' '}
-                <Label htmlFor="priot-high" className="me-3">
-                    High
-                </Label>
-                <Input
-                    type="radio"
-                    name="radio-priority"
-                    value={PRIORITIES.Medium}
-                    checked={priority === PRIORITIES.Medium}
-                    onChange={handlePriotChange}
-                    id="priot-med"
-                />
-                {' '}
-                <Label htmlFor="priot-med" className="me-3">
-                    Medium
-                </Label>
-                <Input
-                    type="radio"
-                    name="radio-priority"
-                    value={PRIORITIES.Low}
-                    checked={priority === PRIORITIES.Low} 
-                    onChange={handlePriotChange}
-                    id="priot-low"
-                />
-                {' '}
-                <Label htmlFor="priot-low" className="me-3">
-                    Low
-                </Label>
+            <FormGroup className="to-do-row d-flex flex-wrap">
+                <div>
+                    <Input
+                        type="radio"
+                        name="radio-priority"
+                        value={PRIORITIES.High}
+                        checked={priority === PRIORITIES.High}
+                        onChange={handlePriotChange}
+                        id="priot-high"
+                    />
+                    {' '}
+                    <Label htmlFor="priot-high" className="me-3">
+                        High
+                    </Label>
+                </div>
+                <div>
+                    <Input
+                        type="radio"
+                        name="radio-priority"
+                        value={PRIORITIES.Medium}
+                        checked={priority === PRIORITIES.Medium}
+                        onChange={handlePriotChange}
+                        id="priot-med"
+                    />
+                    {' '}
+                    <Label htmlFor="priot-med" className="me-3">
+                        Medium
+                    </Label>
+                </div>
+                <div>
+                    <Input
+                        type="radio"
+                        name="radio-priority"
+                        value={PRIORITIES.Low}
+                        checked={priority === PRIORITIES.Low} 
+                        onChange={handlePriotChange}
+                        id="priot-low"
+                    />
+                    {' '}
+                    <Label htmlFor="priot-low" className="me-3">
+                        Low
+                    </Label>
+            </div>
             </FormGroup>
             <Button type="submit">
                 Submit
