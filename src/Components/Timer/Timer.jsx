@@ -15,7 +15,7 @@ export default function Timer() {
         }, 100);
         setIntervalId(id);
     }
-o
+
     function willUnmount() {
         clearInterval(intervalId);
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Button, Card, CardHeader, CardFooter, CardBody, CardTitle, CardText, Modal } from 'reactstrap';
 
 export default function ToDoItem({
     deleteItem,
