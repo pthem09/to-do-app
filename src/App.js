@@ -7,7 +7,7 @@ import ToDoList from './Components/ToDoList/ToDoList';
 import Timer from './Components/Timer/Timer';
 
 export default function App() {
-  let [toDoItems, setToDoItems] = useState([getInitialState]);
+  let [toDoItems, setToDoItems] = useState(getInitialState());
 
   useEffect(saveToDoItems, [toDoItems]);
 
@@ -25,7 +25,8 @@ export default function App() {
 
   function addItem(date, link, description, priority) {
     setToDoItems((oldItems) => [
-        {
+      ...oldItems,  
+      {
         id: nanoid(),
         date,
         description,
@@ -35,11 +36,28 @@ export default function App() {
     ]);
   }
 
+  function editItem(id, newDate, newLink, newDescription, newPriority) {
+    setToDoItems((oldItems) =>
+      oldItems.map((item) => {
+        if (item.id === id) {
+          return {
+            id,
+            date: newDate,
+            description: newDescription,
+            link: newLink,
+            priority: newPriority
+          };
+        } else {
+            return item;
+        }
+      })
+    );
+  }
+  
   function deleteItem(id) {
-    setToDoItems((oldItems) => {
+    setToDoItems((oldItems) =>
        oldItems.filter((item) => item.id !== id)
-    });
-
+    );
   }
 
   return (
@@ -49,10 +67,11 @@ export default function App() {
         <Timer />
       </header>
       <main>
-        <ToDoForm addItem={addItem}/>
+      <ToDoForm submitData={addItem} />
         <ToDoList
             toDoItems={toDoItems}
             deleteItem={deleteItem}
+            editItem={editItem}
           />
       </main>
     </div>

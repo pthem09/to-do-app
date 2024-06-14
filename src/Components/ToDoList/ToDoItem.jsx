@@ -1,38 +1,74 @@
-import React from 'react';
-import { Button, Card, CardHeader, CardFooter, CardBody, CardTitle, CardText, Modal } from 'reactstrap';
+import React, { useState } from 'react';
+import ToDoForm from '../ToDoForm/ToDoForm';
+import {
+    Button,
+    Card,
+    CardHeader,
+    CardFooter,
+    CardBody,
+    CardTitle,
+    CardText,
+    Modal,
+    ModalHeader,
+    ModalBody
+} from 'reactstrap';
 
 export default function ToDoItem({
     deleteItem,
+    editItem,
     id,
     date,
-    description,
+    priority,
     link,
-    priority
+    description
 }) {
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => setModal(oldModalState => !oldModalState);
+
     function handleDelete() {
         deleteItem(id);
     }
     
-    return (
+    function usDateToYyyyMmDd(date) {
+        const [M, d, y] = date.split('/');
+        return `${y}-${M}-${d}`;
+    }
 
+    function updateItem(formattedDate, link, description, priority) {
+        editItem(id, formattedDate, link, description, priority);
+        setModal(false);
+    }
+
+    return (
         <Card
             className="my-2 to-do-item-container"
             color="secondary"
             inverse>
-        <CardHeader>
-            {description}
-            <Button
-                color="danger"
-                className="delete-button"
-                onClick={handleDelete}>
-                    <strong>
-                        X
-                    </strong>
-            </Button>
+        <CardHeader className="card-header">
+            <div>
+                { description }
+            </div>
+            <div>
+                <Button
+                    color="success"
+                    className="card-button"
+                    onClick={toggle}>
+                    🖉
+                </Button>
+                <Button
+                    color="danger"
+                    className="card-button delete-button"
+                    onClick={handleDelete}>
+                        <strong>
+                            X
+                        </strong>
+                </Button>
+            </div>
         </CardHeader>
         <CardBody>
             <CardTitle tag="h5">
-            {description}
+                { description }
             </CardTitle>
             <CardText>
                 Link:&nbsp;
@@ -41,14 +77,24 @@ export default function ToDoItem({
                 </a>
                 <p>{date}</p>
             </CardText>
-            <Button>
-            <a href={link} target="_blank" className="to-do-item-anchor">{link}</a>
-            </Button>
         </CardBody>
         <CardFooter>
-            {priority}
+            { priority }
         </CardFooter>
+        <Modal isOpen={modal} toggle={toggle} fade={true}>
+            <ModalHeader data-bs-theme="dark" className="bg-dark" toggle={toggle}>"Edit " { description }</ModalHeader>
+            <ModalBody data-bs-theme="dark" className="bg-dark">
+                <ToDoForm
+                    id={id}
+                    defaultDate={usDateToYyyyMmDd(date)}
+                    defaultPriority={priority}
+                    defaultLink={link}
+                    defaultDescription={description}
+                    submitData={updateItem}
+                    cancelClicked={toggle}
+                />
+            </ModalBody>
+        </Modal>
         </Card>
-
     )
 }
