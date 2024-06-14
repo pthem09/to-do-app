@@ -82,7 +82,7 @@ export default function ToDoItem({
             { priority }
         </CardFooter>
         <Modal isOpen={modal} toggle={toggle} fade={true}>
-            <ModalHeader data-bs-theme="dark" className="bg-dark" toggle={toggle}>"Edit " { description }</ModalHeader>
+            <ModalHeader data-bs-theme="dark" className="bg-dark" toggle={toggle}>Edit { description }</ModalHeader>
             <ModalBody data-bs-theme="dark" className="bg-dark">
                 <ToDoForm
                     id={id}
