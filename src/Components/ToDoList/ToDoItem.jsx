@@ -20,7 +20,8 @@ export default function ToDoItem({
     date,
     priority,
     link,
-    description
+    description,
+    color
 }) {
     const [modal, setModal] = useState(false);
 
@@ -35,8 +36,8 @@ export default function ToDoItem({
         return `${y}-${M}-${d}`;
     }
 
-    function updateItem(formattedDate, link, description, priority) {
-        editItem(id, formattedDate, link, description, priority);
+    function updateItem(formattedDate, link, description, priority, color) {
+        editItem(id, formattedDate, link, description, priority, color);
         setModal(false);
     }
 
@@ -90,6 +91,7 @@ export default function ToDoItem({
                     defaultPriority={priority}
                     defaultLink={link}
                     defaultDescription={description}
+                    defaultColor={color}
                     submitData={updateItem}
                     cancelClicked={toggle}
                 />

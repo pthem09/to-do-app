@@ -15,6 +15,7 @@ export default function ToDoForm({
     defaultPriority,
     defaultLink,
     defaultDescription,
+    defaultColor,
     cancelClicked,
 }) {
 
@@ -27,6 +28,7 @@ export default function ToDoForm({
     const [link, setLink] = useState(defaultLink ?? '');
     const [description, setDescription] = useState(defaultDescription ?? '');
     const [priority, setPriority] = useState(defaultPriority ?? PRIORITIES.Medium);
+    const [color, setColor] = useState(defaultColor ?? '');
 
     function handleDateChange(e) {
         setDate(e.target.value);
@@ -44,17 +46,24 @@ export default function ToDoForm({
         setPriority(e.target.value);
     }
 
+    function handleColorChange(e) {
+        setColor(e.target.value);
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
 
         const [y, M, d] = date.split('-');
         const formattedDate = `${M}/${d}/${y}`;
-        submitData(formattedDate, link, description, priority);
+        submitData(formattedDate, link, description, priority, color);
 
         setDate('');
         setLink('');
         setDescription('');
         setPriority(PRIORITIES.Medium);
+        setColor('');
+
+        alert(color);
     }
 
     return (
@@ -63,6 +72,16 @@ export default function ToDoForm({
             className="to-do-form"
             onSubmit={handleSubmit}>
             <FormGroup className="to-do-row">
+                <Label htmlFor={`${idPrefix}color`}>
+                    Color
+                </Label>
+                <Input
+                    type="color"
+                    name="color"
+                    id={`${idPrefix}color`}
+                    value={color}
+                    onChange={handleColorChange}
+                />
                 <Label htmlFor={`${idPrefix}link-date`}>
                     Date
                 </Label>
@@ -153,7 +172,7 @@ export default function ToDoForm({
                 <Button
                     type="button"
                     className='ms-3'
-                    onClick={{cancelClicked}}>
+                    onClick={cancelClicked}>
                     Cancel
                 </Button>
             }

@@ -23,7 +23,7 @@ export default function App() {
     return [];
   }
 
-  function addItem(date, link, description, priority) {
+  function addItem(date, link, description, priority, color) {
     setToDoItems((oldItems) => [
       ...oldItems,  
       {
@@ -31,12 +31,13 @@ export default function App() {
         date,
         description,
         link,
-        priority
+        priority,
+        color
       },
     ]);
   }
 
-  function editItem(id, newDate, newLink, newDescription, newPriority) {
+  function editItem(id, newDate, newLink, newDescription, newPriority, newColor) {
     setToDoItems((oldItems) =>
       oldItems.map((item) => {
         if (item.id === id) {
@@ -45,7 +46,8 @@ export default function App() {
             date: newDate,
             description: newDescription,
             link: newLink,
-            priority: newPriority
+            priority: newPriority,
+            color: newColor
           };
         } else {
             return item;
