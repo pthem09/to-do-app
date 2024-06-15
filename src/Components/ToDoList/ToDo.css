@@ -1,3 +1,8 @@
+:root {
+    --card-bg: rgb(106, 114, 122);
+}
+
+
 .to-do-list-container {
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +23,8 @@
     color: lightgreen;
 }
 
-.card-header {
+.card-header-footer {
+    background-color: var(--card-bg);
     display: flex;
     justify-content: space-between;
     align-items: center;

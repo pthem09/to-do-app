@@ -46,7 +46,7 @@ export default function ToDoItem({
             className="my-2 to-do-item-container"
             color="secondary"
             inverse>
-        <CardHeader className="card-header">
+        <CardHeader className="card-header-footer" inverse>
             <div>
                 { description }
             </div>
@@ -79,7 +79,7 @@ export default function ToDoItem({
                 <p>{date}</p>
             </CardText>
         </CardBody>
-        <CardFooter>
+        <CardFooter className="card-header-footer" inverse>
             { priority }
         </CardFooter>
         <Modal isOpen={modal} toggle={toggle} fade={true}>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import invert from 'invert-color';
 import { Form, Button, FormGroup, Label, Input } from 'reactstrap';
 import './ToDoForm.css';
 
@@ -48,6 +49,8 @@ export default function ToDoForm({
 
     function handleColorChange(e) {
         setColor(e.target.value);
+        document.documentElement.style.setProperty('--card-bg', color);
+        document.documentElement.style.setProperty('--card-color', invert(color));
     }
 
     function handleSubmit(e) {
