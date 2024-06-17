@@ -37,8 +37,8 @@ export default function ToDoItem({
     }
 
     function cleanDescription(desc) {
-        desc = "_" + desc;
-        return desc.replace(/[^a-zA-Z0-9 ]/g, "");
+        desc = "card-" + desc;
+        return desc.replace(/[^a-zA-Z0-9]/g, "");
     }
 
     function updateItem(formattedDate, link, description, priority, color) {
