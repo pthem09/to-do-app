@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import invert from "invert-color";
 import { Form, Button, FormGroup, Label, Input } from "reactstrap";
 import "./ToDoForm.css";
 
@@ -29,7 +28,7 @@ export default function ToDoForm({
     const [link, setLink] = useState(defaultLink ?? "");
     const [description, setDescription] = useState(defaultDescription ?? "");
     const [priority, setPriority] = useState(defaultPriority ?? PRIORITIES.Medium);
-    const [color, setColor] = useState(defaultColor ?? "");
+    const [color, setColor] = useState(defaultColor ?? "#35393D");
 
     function handleDateChange(e) {
         setDate(e.target.value);
