@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ToDoForm from '../ToDoForm/ToDoForm';
+import React, { useState } from "react";
+import ToDoForm from "../ToDoForm/ToDoForm";
 import {
     Button,
     Card,
@@ -11,7 +11,7 @@ import {
     Modal,
     ModalHeader,
     ModalBody
-} from 'reactstrap';
+} from "reactstrap";
 
 export default function ToDoItem({
     deleteItem,

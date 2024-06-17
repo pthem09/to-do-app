@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import invert from 'invert-color';
 import { Form, Button, FormGroup, Label, Input } from 'reactstrap';
 import './ToDoForm.css';
 
@@ -43,7 +44,7 @@ export default function ToDoForm({
     function handleDescChange(e) {
         setDescription(e.target.value);
         if (!(e.target.value in colorDict)) {
-            colorDict[e.target.value] = handleColorChange(e);
+            colorDict[e.target.value] = color;
         }
     }
 
@@ -54,23 +55,7 @@ export default function ToDoForm({
     function handleColorChange(e) {
         setColor(e.target.value);
         document.documentElement.style.setProperty('--card-bg', color);
-        document.documentElement.style.setProperty('--card-color', bwColor(color));
-    }
-
-    function bwColor(hex) {
-        hex = hex.slice(1);
-
-        if (hex.length === 3) {
-            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-        }
-
-        var r = parseInt(hex.slice(0, 2), 16),
-            g = parseInt(hex.slice(2, 4), 16),
-            b = parseInt(hex.slice(4, 6), 16);
-
-        return (r * 0.299 + g * 0.587 + b * 0.114) > 186
-            ? '#000000'
-            : '#FFFFFF';
+        document.documentElement.style.setProperty('--card-color', invert(color, true));
     }
 
     function handleSubmit(e) {
