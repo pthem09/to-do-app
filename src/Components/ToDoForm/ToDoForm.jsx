@@ -47,6 +47,7 @@ export default function ToDoForm({
     }
 
     function handleColorChange(e) {
+        alert(color); //delete this line of code
         setColor(e.target.value);
     }
 
