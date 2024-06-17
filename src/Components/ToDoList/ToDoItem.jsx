@@ -46,7 +46,7 @@ export default function ToDoItem({
             className="my-2 to-do-item-container"
             color="secondary"
             inverse>
-        <CardHeader className={`card-header-footer`} inverse>
+        <CardHeader className={`card-header-footer-${description}`} inverse>
             <div>
                 { description }
             </div>

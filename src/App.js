@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import invert from "invert-color";
 import { nanoid } from "nanoid";
 import "./App.css";
 
@@ -31,6 +32,10 @@ export default function App() {
       }
     }
     
+    let cardStyle = document.createElement('cardStyle');
+    cardStyle.type = 'text/css';
+    cardStyle.innerHTML = `card-header-footer-${description} {background-color: ${color}; color: ${invert(color, true)}; }` ;
+
     setToDoItems((oldItems) => [
       ...oldItems,  
       {

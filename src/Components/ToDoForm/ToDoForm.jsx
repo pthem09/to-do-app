@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import invert from 'invert-color';
-import { Form, Button, FormGroup, Label, Input } from 'reactstrap';
-import './ToDoForm.css';
+import React, { useState } from "react";
+import invert from "invert-color";
+import { Form, Button, FormGroup, Label, Input } from "reactstrap";
+import "./ToDoForm.css";
 
 const PRIORITIES = {
-    Low: 'Low',
-    Medium: 'Medium',
-    High: 'High',
+    Low: "Low",
+    Medium: "Medium",
+    High: "High",
 }
 
 export default function ToDoForm({
@@ -20,18 +20,16 @@ export default function ToDoForm({
     cancelClicked,
 }) {
 
-    let idPrefix = '';
-    if (typeof id === 'string' && id.length > 0) {
-        idPrefix = '-' + id;
+    let idPrefix = "";
+    if (typeof id === "string" && id.length > 0) {
+        idPrefix = "-" + id;
     }
     
-    let colorDict = {};
-    
-    const [date, setDate] = useState(defaultDate ?? '');
-    const [link, setLink] = useState(defaultLink ?? '');
-    const [description, setDescription] = useState(defaultDescription ?? '');
+    const [date, setDate] = useState(defaultDate ?? "");
+    const [link, setLink] = useState(defaultLink ?? "");
+    const [description, setDescription] = useState(defaultDescription ?? "");
     const [priority, setPriority] = useState(defaultPriority ?? PRIORITIES.Medium);
-    const [color, setColor] = useState(defaultColor ?? '');
+    const [color, setColor] = useState(defaultColor ?? "");
 
     function handleDateChange(e) {
         setDate(e.target.value);
@@ -43,9 +41,6 @@ export default function ToDoForm({
 
     function handleDescChange(e) {
         setDescription(e.target.value);
-        if (!(e.target.value in colorDict)) {
-            colorDict[e.target.value] = color;
-        }
     }
 
     function handlePriotChange(e) {
@@ -54,22 +49,20 @@ export default function ToDoForm({
 
     function handleColorChange(e) {
         setColor(e.target.value);
-        document.documentElement.style.setProperty('--card-bg', color);
-        document.documentElement.style.setProperty('--card-color', invert(color, true));
     }
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        const [y, M, d] = date.split('-');
+        const [y, M, d] = date.split("-");
         const formattedDate = `${M}/${d}/${y}`;
         submitData(formattedDate, link, description, priority, color);
 
-        setDate('');
-        setLink('');
-        setDescription('');
+        setDate("");
+        setLink("");
+        setDescription("");
         setPriority(PRIORITIES.Medium);
-        setColor('');
+        setColor("");
     }
 
     return (
@@ -136,7 +129,7 @@ export default function ToDoForm({
                         onChange={handlePriotChange}
                         id={`${idPrefix}priot-high`}
                     />
-                    {' '}
+                    {" "}
                     <Label htmlFor={`${idPrefix}priot-high`} className="me-3">
                         High
                     </Label>
@@ -150,7 +143,7 @@ export default function ToDoForm({
                         onChange={handlePriotChange}
                         id={`${idPrefix}priot-med`}
                     />
-                    {' '}
+                    {" "}
                     <Label htmlFor={`${idPrefix}priot-med`} className="me-3">
                         Medium
                     </Label>
@@ -164,7 +157,7 @@ export default function ToDoForm({
                         onChange={handlePriotChange}
                         id={`${idPrefix}priot-low`}
                     />
-                    {' '}
+                    {" "}
                     <Label htmlFor={`${idPrefix}priot-low`} className="me-3">
                         Low
                     </Label>
@@ -174,10 +167,10 @@ export default function ToDoForm({
                 Submit
             </Button>
             {
-                typeof cancelClicked === 'function' &&
+                typeof cancelClicked === "function" &&
                 <Button
                     type="button"
-                    className='ms-3'
+                    className="ms-3"
                     onClick={cancelClicked}>
                     Cancel
                 </Button>
