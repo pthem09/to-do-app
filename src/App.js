@@ -26,7 +26,7 @@ export default function App() {
 
   function addItem(date, link, description, priority, color) {
     
-    for (const [oldDescription, oldColor] of toDoItems) {
+    /*for (const [oldDescription, oldColor] of toDoItems) {
       if (oldDescription === description) {
         color = oldColor;
       }
@@ -35,6 +35,7 @@ export default function App() {
     let cardStyle = document.createElement('cardStyle');
     cardStyle.type = 'text/css';
     cardStyle.innerHTML = `card-header-footer-${description} {background-color: ${color}; color: ${invert(color, true)}; }` ;
+    document.getElementsByTagName('head')[0].appendChild(cardStyle);*/
 
     setToDoItems((oldItems) => [
       ...oldItems,  
@@ -82,11 +83,11 @@ export default function App() {
       </header>
       <main>
       <ToDoForm submitData={addItem} />
-        <ToDoList
-            toDoItems={toDoItems}
-            deleteItem={deleteItem}
-            editItem={editItem}
-          />
+      <ToDoList
+          toDoItems={toDoItems}
+          deleteItem={deleteItem}
+          editItem={editItem}
+        />
       </main>
     </div>
   );

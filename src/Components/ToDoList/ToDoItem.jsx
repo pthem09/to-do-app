@@ -36,6 +36,11 @@ export default function ToDoItem({
         return `${y}-${M}-${d}`;
     }
 
+    function cleanDescription(desc) {
+        desc = "_" + desc;
+        return desc.replace(/[^a-zA-Z0-9 ]/g, "");
+    }
+
     function updateItem(formattedDate, link, description, priority, color) {
         editItem(id, formattedDate, link, description, priority, color);
         setModal(false);
@@ -46,7 +51,7 @@ export default function ToDoItem({
             className="my-2 to-do-item-container"
             color="secondary"
             inverse>
-        <CardHeader className={`card-header-footer-${description}`} inverse>
+        <CardHeader className={`card-header-footer ${cleanDescription(description)}`} inverse>
             <div>
                 { description }
             </div>
