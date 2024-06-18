@@ -39,13 +39,14 @@ export default function App() {
     ]);
   }
 
-  function editItem(id, newDate, newLink, newDescription, newPriority, newColor) {
+  function editItem(id, newDate, newCategory, newLink, newDescription, newPriority, newColor) {
     setToDoItems((oldItems) =>
       oldItems.map((item) => {
         if (item.id === id) {
           return {
             id,
             date: newDate,
+            category: newCategory,
             description: newDescription,
             link: newLink,
             priority: newPriority,
@@ -67,7 +68,8 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        <h1>Manage your tasks</h1>
+        <h1>Keep tabs on your favorite topics</h1>
+        <h2>without needing hundreds of tabs!</h2>
         <Timer />
       </header>
       <main>

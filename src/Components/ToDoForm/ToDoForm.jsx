@@ -26,12 +26,12 @@ export default function ToDoForm({
         idPrefix = "-" + id;
     }
     
-    const [date, setDate] = useState(defaultDate ?? "");
-    const [category, setCategory] = useState(defaultCategory ?? "");
-    const [link, setLink] = useState(defaultLink ?? "");
-    const [description, setDescription] = useState(defaultDescription ?? "");
+    const [date, setDate] = useState(defaultDate ?? '');
+    const [category, setCategory] = useState(defaultCategory ?? '');
+    const [link, setLink] = useState(defaultLink ?? '');
+    const [description, setDescription] = useState(defaultDescription ?? '');
     const [priority, setPriority] = useState(defaultPriority ?? PRIORITIES.Medium);
-    const [color, setColor] = useState(defaultColor ?? "#35393D");
+    const [color, setColor] = useState(defaultColor ?? '#35393D');
     
     function handleDateChange(e) {
         setDate(e.target.value);
@@ -120,7 +120,7 @@ export default function ToDoForm({
                 <Input
                     type="url"
                     name="url"
-                    id={`${idPrefix}link-utl`}
+                    id={`${idPrefix}link-url`}
                     value={link}
                     onChange={handleLinkChange}
                     required

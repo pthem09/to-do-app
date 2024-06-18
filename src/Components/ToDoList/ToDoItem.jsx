@@ -18,6 +18,7 @@ export default function ToDoItem({
     editItem,
     id,
     date,
+    category,
     priority,
     link,
     description,
@@ -36,8 +37,8 @@ export default function ToDoItem({
         return `${y}-${M}-${d}`;
     }
 
-    function updateItem(formattedDate, link, description, priority, color) {
-        editItem(formattedDate, link, description, priority, color);
+    function updateItem(formattedDate, category, link, description, priority, color) {
+        editItem(formattedDate, category, link, description, priority, color);
         setModal(false);
     }
 
@@ -48,7 +49,7 @@ export default function ToDoItem({
             inverse>
         <CardHeader className="card-header-footer">
             <div>
-                { description }
+                { category }
             </div>
             <div>
                 <Button
@@ -82,11 +83,12 @@ export default function ToDoItem({
             {date} (Importance: { priority })
         </CardFooter>
         <Modal isOpen={modal} toggle={toggle} fade={true}>
-            <ModalHeader data-bs-theme="dark" className="bg-dark" toggle={toggle}>Edit { description }</ModalHeader>
+            <ModalHeader data-bs-theme="dark" className="bg-dark" toggle={toggle}>Edit { category }: { description }</ModalHeader>
             <ModalBody data-bs-theme="dark" className="bg-dark">
                 <ToDoForm
                     id={id}
-                    defaultDate={usDateToYyyyMmDd(date)}                  
+                    defaultDate={usDateToYyyyMmDd(date)}
+                    defaultCategory={category}
                     defaultPriority={priority}
                     defaultLink={link}
                     defaultDescription={description}
