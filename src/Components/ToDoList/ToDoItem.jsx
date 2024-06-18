@@ -38,7 +38,7 @@ export default function ToDoItem({
     }
 
     function updateItem(formattedDate, category, link, description, priority, color) {
-        editItem(formattedDate, category, link, description, priority, color);
+        editItem(id, formattedDate, category, link, description, priority, color);
         setModal(false);
     }
 
