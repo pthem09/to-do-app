@@ -68,7 +68,7 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        <h1>Keep tabs on your favorite topics</h1>
+        <h1>Keep tabs on your takss</h1>
         <h2>without needing hundreds of tabs!</h2>
         <Timer />
       </header>
