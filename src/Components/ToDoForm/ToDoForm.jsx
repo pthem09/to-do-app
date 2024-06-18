@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import invert from "invert-color";
 import { Form, Button, FormGroup, Label, Input } from "reactstrap";
 import "./ToDoForm.css";
 
@@ -12,6 +13,7 @@ export default function ToDoForm({
     submitData,
     id,
     defaultDate,
+    defaultCategory,
     defaultPriority,
     defaultLink,
     defaultDescription,
@@ -26,14 +28,19 @@ export default function ToDoForm({
     
     const [date, setDate] = useState(defaultDate ?? "");
     const [link, setLink] = useState(defaultLink ?? "");
+    const [category, setCategory] = useState(defaultCategory ?? "");
     const [description, setDescription] = useState(defaultDescription ?? "");
     const [priority, setPriority] = useState(defaultPriority ?? PRIORITIES.Medium);
     const [color, setColor] = useState(defaultColor ?? "#35393D");
-
+    
     function handleDateChange(e) {
         setDate(e.target.value);
     }
 
+    function handleCategoryChange(e) {
+        setCategory(e.target.value);
+    }    
+    
     function handleLinkChange(e) {
         setLink(e.target.value);
     }
@@ -47,22 +54,22 @@ export default function ToDoForm({
     }
 
     function handleColorChange(e) {
-        alert(color); //delete this line of code
         setColor(e.target.value);
+        document.documentElement.style.setProperty('--card-bg', color);
+        document.documentElement.style.setProperty('--card-color', invert(color, true));
     }
-
+    
     function handleSubmit(e) {
         e.preventDefault();
-
-        const [y, M, d] = date.split("-");
+        const [y, M, d] = date.split('-');
         const formattedDate = `${M}/${d}/${y}`;
-        submitData(formattedDate, link, description, priority, color);
-
-        setDate("");
-        setLink("");
-        setDescription("");
+        submitData(formattedDate, category, link, description, priority, color);
+        setDate('');
+        setCategory('');
+        setLink('');
+        setDescription('');
         setPriority(PRIORITIES.Medium);
-        setColor("");
+        setColor('');
     }
 
     return (
@@ -70,6 +77,19 @@ export default function ToDoForm({
             data-bs-theme="dark"
             className="to-do-form"
             onSubmit={handleSubmit}>
+            <FormGroup className="to-do-row">
+                <Label htmlFor={`${idPrefix}category-text`}>
+                    Category
+                </Label>
+                <Input
+                    type="text"
+                    name="category-text"
+                    id={`${idPrefix}category-text`}
+                    value={category}
+                    onChange={handleCategoryChange}
+                    required
+                />
+            </FormGroup>
             <FormGroup className="to-do-row">
                 <Label htmlFor={`${idPrefix}color`}>
                     Color
@@ -129,7 +149,7 @@ export default function ToDoForm({
                         onChange={handlePriotChange}
                         id={`${idPrefix}priot-high`}
                     />
-                    {" "}
+                    {' '}
                     <Label htmlFor={`${idPrefix}priot-high`} className="me-3">
                         High
                     </Label>
@@ -143,7 +163,7 @@ export default function ToDoForm({
                         onChange={handlePriotChange}
                         id={`${idPrefix}priot-med`}
                     />
-                    {" "}
+                    {' '}
                     <Label htmlFor={`${idPrefix}priot-med`} className="me-3">
                         Medium
                     </Label>
@@ -157,7 +177,7 @@ export default function ToDoForm({
                         onChange={handlePriotChange}
                         id={`${idPrefix}priot-low`}
                     />
-                    {" "}
+                    {' '}
                     <Label htmlFor={`${idPrefix}priot-low`} className="me-3">
                         Low
                     </Label>
@@ -167,10 +187,10 @@ export default function ToDoForm({
                 Submit
             </Button>
             {
-                typeof cancelClicked === "function" &&
+                typeof cancelClicked === 'function' &&
                 <Button
                     type="button"
-                    className="ms-3"
+                    className='ms-3'
                     onClick={cancelClicked}>
                     Cancel
                 </Button>

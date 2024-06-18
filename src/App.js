@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import invert from "invert-color";
 import { nanoid } from "nanoid";
 import "./App.css";
 
@@ -24,24 +23,14 @@ export default function App() {
     return [];
   }
 
-  function addItem(date, link, description, priority, color) {
+  function addItem(date, category, link, description, priority, color) {
     
-    /*for (const [oldDescription, oldColor] of toDoItems) {
-      if (oldDescription === description) {
-        color = oldColor;
-      }
-    }
-    
-    let cardStyle = document.createElement('cardStyle');
-    cardStyle.type = 'text/css';
-    cardStyle.innerHTML = `card-header-footer-${description} {background-color: ${color}; color: ${invert(color, true)}; }` ;
-    document.getElementsByTagName('head')[0].appendChild(cardStyle);*/
-
     setToDoItems((oldItems) => [
       ...oldItems,  
       {
         id: nanoid(),
         date,
+        category,
         description,
         link,
         priority,
