@@ -27,8 +27,8 @@ export default function ToDoForm({
     }
     
     const [date, setDate] = useState(defaultDate ?? "");
-    const [link, setLink] = useState(defaultLink ?? "");
     const [category, setCategory] = useState(defaultCategory ?? "");
+    const [link, setLink] = useState(defaultLink ?? "");
     const [description, setDescription] = useState(defaultDescription ?? "");
     const [priority, setPriority] = useState(defaultPriority ?? PRIORITIES.Medium);
     const [color, setColor] = useState(defaultColor ?? "#35393D");
@@ -187,10 +187,10 @@ export default function ToDoForm({
                 Submit
             </Button>
             {
-                typeof cancelClicked === 'function' &&
+                typeof cancelClicked === "function" &&
                 <Button
                     type="button"
-                    className='ms-3'
+                    className="ms-3"
                     onClick={cancelClicked}>
                     Cancel
                 </Button>
