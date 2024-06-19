@@ -5,6 +5,7 @@ import "./App.css";
 import ToDoForm from "./Components/ToDoForm/ToDoForm";
 import ToDoList from "./Components/ToDoList/ToDoList";
 import Timer from "./Components/Timer/Timer";
+import CustomNavbar from "./Components/Navbar/CustomNavbar";
 
 export default function App() {
   let [toDoItems, setToDoItems] = useState(getInitialState());
@@ -68,7 +69,8 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        <h1>Keep tabs on your takss</h1>
+        <CustomNavbar />
+        <h1>Keep tabs on your tasks</h1>
         <h2>without needing hundreds of tabs!</h2>
         <Timer />
       </header>

@@ -14,6 +14,7 @@ Hosting link: https://pthem09.github.io/to-do-app/
 1. Allow users to sort items by category or priority.
 2. Allow users to store added items in a database instead of local storage.
 3. Allow users to undo deleted items, perhaps by creating a recycle bin.
+4. Allow users to select different colors for different card categories.
 
 ## User stories
 

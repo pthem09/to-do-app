@@ -9,6 +9,12 @@ const PRIORITIES = {
     High: "High",
 }
 
+const LIST_FILTER = {
+    All: "All",
+    Complete: "Completed",
+    Pending: "In progress",
+}
+
 export default function ToDoForm({
     submitData,
     id,
@@ -31,7 +37,7 @@ export default function ToDoForm({
     const [link, setLink] = useState(defaultLink ?? '');
     const [description, setDescription] = useState(defaultDescription ?? '');
     const [priority, setPriority] = useState(defaultPriority ?? PRIORITIES.Medium);
-    const [color, setColor] = useState(defaultColor ?? '#35393D');
+    const [color, setColor] = useState(defaultColor ?? '');
     
     function handleDateChange(e) {
         setDate(e.target.value);
@@ -185,6 +191,14 @@ export default function ToDoForm({
                     </Label>
             </div>
             </FormGroup>
+            <div>
+                <FormGroup className="to-do-row d-flex flex-wrap" check>
+                    <Input type="checkbox" />
+                    <Label check>
+                        Complete
+                    </Label>
+                </FormGroup>
+            </div>
             <Button type="submit">
                 Submit
             </Button>
